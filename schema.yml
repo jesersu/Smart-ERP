@@ -1,0 +1,636 @@
+openapi: 3.0.3
+info:
+  title: ''
+  version: 0.0.0
+paths:
+  /article/:
+    get:
+      operationId: article_list
+      description: |-
+        ArticleViewSet class docstring
+
+        retrieve:
+        retrieve class docstring
+
+        destroy:
+        destroy class docstring
+
+        partial_update:
+        partial_update class docstring
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: title
+        schema:
+          type: string
+      tags:
+      - article
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedArticleList'
+          description: ''
+    post:
+      operationId: article_create
+      description: |-
+        ArticleViewSet class docstring
+
+        retrieve:
+        retrieve class docstring
+
+        destroy:
+        destroy class docstring
+
+        partial_update:
+        partial_update class docstring
+      tags:
+      - article
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Article'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Article'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Article'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
+          description: ''
+  /article/{slug}/:
+    get:
+      operationId: article_retrieve
+      description: |-
+        ArticleViewSet class docstring
+
+        retrieve:
+        retrieve class docstring
+
+        destroy:
+        destroy class docstring
+
+        partial_update:
+        partial_update class docstring
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+          pattern: '[a-z0-9]+(?:-[a-z0-9]+)'
+        required: true
+      tags:
+      - article
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
+          description: ''
+    put:
+      operationId: article_update
+      description: update method docstring
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+          pattern: '[a-z0-9]+(?:-[a-z0-9]+)'
+        required: true
+      tags:
+      - article
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Article'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Article'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Article'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
+          description: ''
+    patch:
+      operationId: article_partial_update
+      description: partial_update method docstring
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+          pattern: '[a-z0-9]+(?:-[a-z0-9]+)'
+        required: true
+      tags:
+      - article
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedArticle'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedArticle'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedArticle'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
+          description: ''
+    delete:
+      operationId: article_destroy
+      description: destroy method docstring
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+          pattern: '[a-z0-9]+(?:-[a-z0-9]+)'
+        required: true
+      tags:
+      - article
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /article/{slug}/image/:
+    get:
+      operationId: article_image_retrieve
+      description: image method docstring
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+          pattern: '[a-z0-9]+(?:-[a-z0-9]+)'
+        required: true
+      tags:
+      - article
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
+          description: ''
+    post:
+      operationId: article_image_create
+      description: image method docstring
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+          pattern: '[a-z0-9]+(?:-[a-z0-9]+)'
+        required: true
+      tags:
+      - article
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Article'
+          '*/*':
+            schema:
+              $ref: '#/components/schemas/Article'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
+          description: ''
+    delete:
+      operationId: article_image_destroy
+      description: image method docstring
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+          pattern: '[a-z0-9]+(?:-[a-z0-9]+)'
+        required: true
+      tags:
+      - article
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /article/today/:
+    get:
+      operationId: article_today_retrieve
+      description: |-
+        ArticleViewSet class docstring
+
+        retrieve:
+        retrieve class docstring
+
+        destroy:
+        destroy class docstring
+
+        partial_update:
+        partial_update class docstring
+      tags:
+      - article
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Article'
+          description: ''
+  /schema/:
+    get:
+      operationId: schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - schema
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+components:
+  schemas:
+    Article:
+      type: object
+      properties:
+        title:
+          type: string
+          description: title model help_text
+          maxLength: 255
+        author:
+          type: integer
+          description: The ID of the user that created this article; if none is provided,
+            defaults to the currently logged in user.
+        body:
+          type: string
+          description: body serializer help_text
+          maxLength: 5000
+        slug:
+          type: string
+          description: slug model help_text
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+        date_created:
+          type: string
+          format: date-time
+          readOnly: true
+        date_modified:
+          type: string
+          format: date-time
+          readOnly: true
+        read_only_nullable:
+          type: string
+          readOnly: true
+          nullable: true
+        references:
+          type: object
+          additionalProperties:
+            type: string
+            format: uri
+            description: but i needed to test these 2 fields somehow
+          readOnly: true
+          description: this is a really bad example
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+          description: should articles have UUIDs?
+        cover:
+          type: string
+          format: uri
+        cover_name:
+          type: string
+        article_type:
+          nullable: true
+          description: IntegerField declared on model with choices=(...) and exposed
+            via ModelSerializer
+          oneOf:
+          - $ref: '#/components/schemas/ArticleTypeEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        group:
+          type: string
+        original_group:
+          type: string
+          readOnly: true
+      required:
+      - body
+      - cover_name
+      - date_created
+      - date_modified
+      - group
+      - original_group
+      - read_only_nullable
+      - references
+      - title
+      - uuid
+    ArticleTypeEnum:
+      enum:
+      - 1
+      - 2
+      - 3
+      - 7
+      - 8
+      type: integer
+    NullEnum:
+      enum:
+      - null
+    PaginatedArticleList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Article'
+    PatchedArticle:
+      type: object
+      properties:
+        title:
+          type: string
+          description: title model help_text
+          maxLength: 255
+        author:
+          type: integer
+          description: The ID of the user that created this article; if none is provided,
+            defaults to the currently logged in user.
+        body:
+          type: string
+          description: body serializer help_text
+          maxLength: 5000
+        slug:
+          type: string
+          description: slug model help_text
+          maxLength: 50
+          pattern: ^[-a-zA-Z0-9_]+$
+        date_created:
+          type: string
+          format: date-time
+          readOnly: true
+        date_modified:
+          type: string
+          format: date-time
+          readOnly: true
+        read_only_nullable:
+          type: string
+          readOnly: true
+          nullable: true
+        references:
+          type: object
+          additionalProperties:
+            type: string
+            format: uri
+            description: but i needed to test these 2 fields somehow
+          readOnly: true
+          description: this is a really bad example
+        uuid:
+          type: string
+          format: uuid
+          readOnly: true
+          description: should articles have UUIDs?
+        cover:
+          type: string
+          format: uri
+        cover_name:
+          type: string
+        article_type:
+          nullable: true
+          description: IntegerField declared on model with choices=(...) and exposed
+            via ModelSerializer
+          oneOf:
+          - $ref: '#/components/schemas/ArticleTypeEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        group:
+          type: string
+        original_group:
+          type: string
+          readOnly: true
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
